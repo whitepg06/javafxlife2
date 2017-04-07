@@ -1,5 +1,8 @@
 package javafxlife;
 
+import static java.awt.Color.blue;
+import static java.awt.Color.green;
+import static java.awt.Color.red;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -63,12 +66,21 @@ public class JavaFXLife extends Application {
     public MenuBar myMenuBar() {
         MenuBar myBar = new MenuBar();
         final Menu fileMenu = new Menu("File");
+        final Menu colorMenu = new Menu("Color");
         final Menu speedMenu = new Menu("Speed");
         final Menu optionsMenu = new Menu("Options");
         final Menu helpMenu = new Menu("Help");
+        final Menu colorAllMenu = new Menu("Colors");
+               
 
-        myBar.getMenus().addAll(fileMenu, speedMenu, optionsMenu, helpMenu);
-
+        myBar.getMenus().addAll(fileMenu, speedMenu, optionsMenu, helpMenu, colorAllMenu);
+        
+        
+        /**
+         * *********************************************************************
+         * Color Menu Section
+         */
+    
         /**
          * *********************************************************************
          * File Menu Section
@@ -166,12 +178,29 @@ public class JavaFXLife extends Application {
         color.setAccelerator(KeyCombination.keyCombination("Ctrl+C"));
         color.setOnAction(e -> lifePane.setShowColors(color.isSelected()));
         optionsMenu.getItems().add(color);
+        
 
+        /**
+         * *********************************************************************
+         * All Color Menu Section
+         */
+        MenuItem colors = new MenuItem("Color All Cells");
+        color.setAccelerator(KeyCombination.keyCombination("Ctrl+A"));
+        color.setOnAction(e -> lifePane.setShowColors(color.isSelected()));
+        optionsMenu.getItems().add(color);
+      
+        MenuItem blue = new MenuItem("blue");
+        color.setOnAction(e -> lifePane.setShowColors(color.isSelected()));
+        optionsMenu.getItems().add(blue);
+        
+        MenuItem red = new MenuItem("red");
+        color.setOnAction(e -> lifePane.setShowColors(color.isSelected()));
+        optionsMenu.getItems().add(red);
+        
         /**
          * *********************************************************************
          * Help Menu Section
          */
-        
         MenuItem jp = new MenuItem("JP");
         jp.setOnAction(e -> {
             lifePane.pause();
